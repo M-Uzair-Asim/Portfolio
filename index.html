@@ -1562,5 +1562,42 @@
   CyberWaze Global · Dubai 🇦🇪
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Custom cursor (decorative ring only - nat<script defer src="/_vercel/insights/script.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+<script>
+// Custom cursor (decorative ring only - natural cursor hidden)
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX - 6 + 'px';
+  cursor.style.top = e.clientY - 6 + 'px';
+  cursorRing.style.left = e.clientX - 20 + 'px';
+  cursorRing.style.top = e.clientY - 20 + 'px';
+});
+
+// Intersection observer for timeline animations
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.timeline-item.animate').forEach(item => {
+  timelineObserver.observe(item);
+});
+</script>
+
+<!-- Vercel Speed Insights -->
+<script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/web-analytics/script.js"></script>
+
+</body>
+</html>
