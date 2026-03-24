@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Uzair Asim — Cybersecurity Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Crimson+Pro:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  :root {
+    --bg: #050a0f;
+    --surface: #0b1520;
+    --surface2: #0f1d2c;
+    --accent: #00d4ff;
+    --accent2: #00ff9d;
+    --accent3: #ff6b35;
+    --text: #e8eef4;
+    --muted: #5a7a96;
+    --border: rgba(0, 212, 255, 0.12);
+    --glow: 0 0 40px rgba(0, 212, 255, 0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Custom Cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(0,212,255,0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.15s ease;
+  }
+
+  /* Grid Background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(5,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,255,157,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(0,255,157,0); }
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 60px 80px;
+    overflow: hidden;
+  }
+  .hero-bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(0,212,255,0.06); top: 10%; right: 5%; }
+  .orb2 { width: 300px; height: 300px; background: rgba(0,255,157,0.05); bottom: 20%; left: 10%; }
+  .orb3 { width: 200px; height: 200px; background: rgba(255,107,53,0.04); top: 50%; right: 30%; }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-eyebrow-line {
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-eyebrow-text {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 10vw, 100px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+  .hero-name span {
+    display: block;
+    color: var(--accent);
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+  }
+  .hero-title {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: clamp(14px, 3.5vw, 32px);
+    font-weight: 300;
+    color: var(--muted);
+    margin: 24px 0 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+    word-break: break-word;
+    white-space: normal;
+  }
+  .hero-desc {
+    max-width: 560px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-size: 13px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+    margin-bottom: 48px;
+  }
+  .hero-desc strong { color: var(--text); }
+  .hero-ctas {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 14px 36px;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,212,255,0.3); }
+  .btn-outline {
+    padding: 14px 36px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s forwards;
+  }
+  .stat-item {
+    text-align: right;
+    border-right: 2px solid var(--accent);
+    padding-right: 24px;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+
+  /* TERMINAL TICKER */
+  .ticker-wrap {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-item {
+    display: inline-block;
+    padding: 0 40px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .ticker-item span { color: var(--accent); margin-right: 8px; }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: -0.02em;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ABOUT */
+  #about {
+    padding: 120px 60px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text p {
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .about-text p strong { color: var(--text); }
+  .about-highlight {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1.5;
+    border-left: 2px solid var(--accent);
+    padding-left: 24px;
+    margin: 32px 0;
+  }
+  .about-right {}
+  .location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .location-badge span { color: var(--accent2); }
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+  }
+  .cert-item:hover { border-color: rgba(0,212,255,0.3); background: var(--surface2); }
+  .cert-item:hover::before { transform: scaleY(1); }
+  .cert-icon { font-size: 16px; }
+  .cert-name { font-size: 12px; flex: 1; }
+  .cert-org { font-size: 10px; color: var(--accent); letter-spacing: 0.1em; }
+
+  /* SKILLS */
+  #skills {
+    padding: 120px 60px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .skill-domain {
+    background: var(--bg);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .skill-domain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,212,255,0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .skill-domain:hover { background: var(--surface2); }
+  .skill-domain:hover::after { opacity: 1; }
+  .skill-domain-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .skill-domain-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-tag {
+    padding: 4px 12px;
+    background: rgba(0,212,255,0.05);
+    border: 1px solid rgba(0,212,255,0.15);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .skill-tag:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* EXPERIENCE */
+  #experience { padding: 120px 60px; }
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 64px;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.6s;
+  }
+  .timeline-item.animate {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  .timeline-item.animate.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -46px;
+    top: 6px;
+    width: 12px; height: 12px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+  }
+  .timeline-date {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .timeline-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .timeline-company {
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .timeline-desc {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 13px;
+    max-width: 640px;
+  }
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .timeline-tag {
+    padding: 3px 12px;
+    background: rgba(0,255,157,0.05);
+    border: 1px solid rgba(0,255,157,0.2);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+  }
+
+  /* PROJECTS */
+  #projects {
+    padding: 120px 60px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .project-card {
+    background: var(--bg);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    group: true;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { background: var(--surface2); }
+  .project-num {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .project-tech span {
+    padding: 3px 10px;
+    background: rgba(255,107,53,0.08);
+    border: 1px solid rgba(255,107,53,0.2);
+    font-size: 10px;
+    color: var(--accent3);
+    letter-spacing: 0.1em;
+  }
+  .project-arrow {
+    position: absolute;
+    top: 48px; right: 48px;
+    font-size: 20px;
+    color: var(--muted);
+    transition: all 0.3s;
+  }
+  .project-card:hover .project-arrow {
+    color: var(--accent);
+    transform: translate(4px, -4px);
+  }
+
+  /* CONTACT */
+  #contact { padding: 120px 60px; }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .contact-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .contact-heading em {
+    font-style: normal;
+    color: var(--accent);
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+  }
+  .contact-sub {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--text);
+    padding: 16px 24px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    font-size: 13px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,212,255,0.04);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .contact-link:hover::before { transform: translateX(0); }
+  .contact-link:hover { border-color: rgba(0,212,255,0.4); color: var(--accent); }
+  .contact-link-icon { font-size: 18px; }
+  .contact-link-label { font-size: 10px; letter-spacing: 0.2em; color: var(--muted); margin-left: auto; text-transform: uppercase; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { position: relative; }
+  .form-group label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { height: 120px; }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 60px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  footer span { color: var(--accent); }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    animation: fadeIn 1s 1.5s forwards;
+    opacity: 0;
+  }
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; right: 100%;
+    height: 100%;
+    background: var(--accent);
+    animation: scanline 2s ease-in-out infinite;
+  }
+  @keyframes scanline {
+    0% { left: -100%; right: 100%; }
+    100% { left: 100%; right: -100%; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SCAN LINE EFFECT */
+  .scanlines {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* Glitch effect for name */
+  @keyframes glitch {
+    0% { clip-path: inset(0 0 95% 0); transform: translate(-4px); }
+    10% { clip-path: inset(30% 0 50% 0); transform: translate(4px); }
+    20% { clip-path: inset(70% 0 10% 0); transform: translate(-2px); }
+    30% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  }
+
+  /* =============================
+     RESPONSIVE — TABLET & MOBILE
+     ============================= */
+
+  /* Tablet (max 1024px) */
+  @media (max-width: 1024px) {
+    nav { padding: 16px 32px; }
+    #hero { padding: 110px 32px 80px; }
+    .hero-stats { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+    section { padding-left: 32px !important; padding-right: 32px !important; }
+    .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    #services > div[style*="grid"] { grid-template-columns: repeat(2,1fr) !important; }
+  }
+
+  /* Mobile (max 768px) */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav {
+      padding: 14px 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nav-links { display: none; }
+    .nav-status { font-size: 10px; }
+    .nav-logo { font-size: 15px; }
+
+    /* HERO */
+    #hero {
+      min-height: auto;
+      padding: 90px 20px 56px;
+      align-items: flex-start;
+      overflow-x: hidden;
+    }
+    .hero-content {
+      max-width: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    .hero-stats { display: none; }
+    .hero-name {
+      font-size: clamp(32px, 11vw, 56px) !important;
+      line-height: 1.0 !important;
+      letter-spacing: -0.02em !important;
+      word-break: break-word !important;
+    }
+    .hero-title {
+      font-size: 13px !important;
+      margin: 12px 0 18px !important;
+      line-height: 1.6 !important;
+      white-space: normal !important;
+    }
+    .hero-eyebrow-text {
+      font-size: 9px !important;
+      letter-spacing: 0.15em !important;
+      white-space: normal !important;
+      word-break: break-word !important;
+    }
+    .hero-desc {
+      font-size: 12px !important;
+      margin-bottom: 28px !important;
+      line-height: 1.8 !important;
+    }
+    .hero-ctas {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-primary, .btn-outline {
+      text-align: center;
+      padding: 14px 24px;
+      font-size: 11px;
+      width: 100%;
+      display: block;
+    }
+    .scroll-indicator { display: none; }
+    .avail-badge {
+      font-size: 9px !important;
+      letter-spacing: 0.1em !important;
+    }
+
+    /* TICKER */
+    .ticker-item { padding: 0 20px; font-size: 10px; }
+
+    /* SECTIONS */
+    section {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      padding-top: 72px !important;
+      padding-bottom: 72px !important;
+    }
+    .section-title { font-size: clamp(22px, 7vw, 36px) !important; }
+    .section-label { margin-bottom: 36px; gap: 10px; }
+    .section-line { display: none; }
+
+    /* ABOUT */
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-highlight { font-size: 17px; padding-left: 16px; }
+    .about-text p { font-size: 12px; }
+    .cert-item { padding: 12px 14px; }
+    .cert-name { font-size: 11px; }
+    .location-badge { font-size: 10px; }
+
+    /* SKILLS */
+    .skills-grid { grid-template-columns: 1fr; gap: 2px; }
+    .skill-domain { padding: 28px 20px; }
+    .skill-domain-name { font-size: 14px; }
+    .skill-tag { font-size: 9px; padding: 3px 9px; }
+
+    /* EXPERIENCE */
+    .timeline { padding-left: 24px; }
+    .timeline-dot { left: -30px; width: 10px; height: 10px; }
+    .timeline-role { font-size: 17px; }
+    .timeline-date { font-size: 9px; }
+    .timeline-company { font-size: 11px; }
+    .timeline-desc { font-size: 12px; max-width: 100%; line-height: 1.9; }
+    .timeline-tag { font-size: 9px; padding: 2px 10px; }
+
+    /* PROJECTS */
+    .projects-grid { grid-template-columns: 1fr; gap: 2px; }
+    .project-card { padding: 28px 20px; }
+    .project-name { font-size: 17px; }
+    .project-desc { font-size: 12px; }
+    .project-arrow { top: 28px; right: 20px; font-size: 16px; }
+    .project-num { font-size: 9px; }
+
+    /* SERVICES */
+    .services-section { padding: 72px 20px !important; }
+    .services-grid { grid-template-columns: 1fr !important; gap: 2px; }
+    .service-card { padding: 24px 20px !important; }
+    .service-card-title { font-size: 14px; }
+    .services-intro { font-size: 12px !important; margin-bottom: 32px !important; }
+
+    /* CONTACT */
+    .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .contact-heading { font-size: clamp(28px, 9vw, 48px) !important; }
+    .contact-sub { font-size: 12px; }
+    .contact-link { padding: 13px 16px; font-size: 11px; }
+    .contact-link-label { font-size: 9px; }
+    .contact-link-icon { font-size: 15px; }
+    .form-group input, .form-group textarea { font-size: 12px; padding: 12px 14px; }
+    .form-group label { font-size: 9px; }
+
+    /* FOOTER */
+    footer {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 10px;
+    }
+
+    /* FLOAT TAG — hide on mobile, takes too much space */
+    .float-tag { display: none; }
+  }
+
+  /* Small phones (max 480px) */
+  @media (max-width: 480px) {
+    .hero-name { font-size: clamp(36px, 14vw, 56px) !important; }
+    .hero-title { font-size: 13px !important; }
+    .about-highlight { font-size: 15px; }
+    .contact-heading { font-size: clamp(26px, 10vw, 40px) !important; }
+    .skills-grid { gap: 1px; }
+    .projects-grid { gap: 1px; }
+  }
+
+  /* SERVICES SECTION */
+  .services-section {
+    padding: 120px 60px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .services-intro {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 56px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--bg);
+    padding: 36px;
+    transition: background 0.3s;
+  }
+  .service-card:hover { background: var(--surface2); }
+  .service-card-icon { font-size: 24px; margin-bottom: 16px; }
+  .service-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .service-card-desc {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  /* AVAILABILITY BADGE */
+  .avail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(0,255,157,0.05);
+    border: 1px solid rgba(0,255,157,0.2);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* floating "currently" tag */
+  .float-tag {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    z-index: 50;
+    animation: fadeIn 2s 2s forwards;
+    opacity: 0;
+  }
+  .float-tag strong { color: var(--accent); display: block; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="scanlines"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">SEC://UZAIR</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    Cybersecurity & GRC Professional
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-orb orb1"></div>
+  <div class="hero-bg-orb orb2"></div>
+  <div class="hero-bg-orb orb3"></div>
+
+  <div class="hero-content">
+    <div class="avail-badge">
+      <div class="status-dot" style="width:5px;height:5px;"></div>
+      Available · Dubai, UAE
+    </div>
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <div class="hero-eyebrow-text">GRC Analyst · Cybersecurity Professional</div>
+    </div>
+    <h1 class="hero-name">
+      Muhammad
+      <span>Uzair Asim</span>
+    </h1>
+    <p class="hero-title">GRC Analyst · Security Researcher · Email & Cloud Security</p>
+    <p class="hero-desc">
+      I help organizations build <strong>resilient, compliant security postures</strong> through hands-on GRC implementations, framework mapping, and security tooling expertise.
+      Currently at <strong>CyberWaze Global</strong> — working with Cywift GRC automation, Skysnag email security, and driving real-world compliance programs across the UAE.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#experience" class="btn-outline">View My Work</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Certifications</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10mo</div>
+      <div class="stat-label">At CyberWaze</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Products Assigned</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span>▸</span> Google Cybersecurity Professional</span>
+    <span class="ticker-item"><span>▸</span> CEH v12 · Coursera</span>
+    <span class="ticker-item"><span>▸</span> ISO/IEC 27001 Lead Auditor · Mastermind Assurance</span>
+    <span class="ticker-item"><span>▸</span> ISO/IEC 42001 Lead Auditor · Mastermind Assurance</span>
+    <span class="ticker-item"><span>▸</span> Zero Trust Cyber Associate · Zscaler</span>
+    <span class="ticker-item"><span>▸</span> ISC2 Certified in Cybersecurity</span>
+    <span class="ticker-item"><span>▸</span> CNSP · The SecOps Group</span>
+    <span class="ticker-item"><span>▸</span> AI Certification · Samsung Innovation Campus</span>
+    <span class="ticker-item"><span>▸</span> Oracle OCI 2025 AI Foundations Associate</span>
+    <span class="ticker-item"><span>▸</span> ISO/IEC 42001 Lead Implementor · PECB (In Progress)</span>
+    <span class="ticker-item"><span>▸</span> Google Cybersecurity Professional</span>
+    <span class="ticker-item"><span>▸</span> CEH v12 · Coursera</span>
+    <span class="ticker-item"><span>▸</span> ISO/IEC 27001 Lead Auditor · Mastermind Assurance</span>
+    <span class="ticker-item"><span>▸</span> ISO/IEC 42001 Lead Auditor · Mastermind Assurance</span>
+    <span class="ticker-item"><span>▸</span> Zero Trust Cyber Associate · Zscaler</span>
+    <span class="ticker-item"><span>▸</span> ISC2 Certified in Cybersecurity</span>
+    <span class="ticker-item"><span>▸</span> CNSP · The SecOps Group</span>
+    <span class="ticker-item"><span>▸</span> AI Certification · Samsung Innovation Campus</span>
+    <span class="ticker-item"><span>▸</span> Oracle OCI 2025 AI Foundations Associate</span>
+    <span class="ticker-item"><span>▸</span> ISO/IEC 42001 Lead Implementor · PECB (In Progress)</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">
+    <span class="section-num">01 /</span>
+    <h2 class="section-title">About</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>GRC Analyst and Cybersecurity professional based in Dubai, UAE</strong>, specialising in governance, risk & compliance frameworks, GRC automation tooling, and email security. I hold a <strong>Bachelor of Science from the University of London</strong> — one of the world's top-ranked universities — complementing a deep portfolio of industry certifications.</p>
+      <div class="about-highlight">"Compliance without automation is a bottleneck. I build the bridge between frameworks and real-world implementation."</div>
+      <p>At <strong>CyberWaze Global</strong>, I work hands-on with the <strong>Cywift GRC Automation platform</strong> — mapping its Master Control Library to frameworks like ISO 27001, PDPL, and NIST — and manage <strong>Skysnag</strong>, an advanced email security platform, as a product I actively support and promote. I also maintain the Master Leads List across multiple products, bridging security and business development.</p>
+      <p>My approach bridges technical depth and business impact — translating complex regulatory requirements into executable compliance programs that actually protect organizations.</p>
+      <p>Currently pursuing <strong>CISA</strong> and <strong>CISSP</strong> to push into senior GRC advisory roles.</p>
+    </div>
+    <div class="about-right">
+      <div class="location-badge">
+        <span>📍</span> Dubai, United Arab Emirates
+      </div>
+      <div style="margin-bottom:28px;padding:16px 20px;background:var(--surface);border:1px solid rgba(0,255,157,0.2);">
+        <div style="font-size:10px;letter-spacing:0.2em;color:var(--accent2);text-transform:uppercase;margin-bottom:6px;">Education</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Bachelor of Science — Computer Science</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">University of London <span style="color:var(--accent);font-size:10px;">· QS World Top 100</span></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:5px;letter-spacing:0.05em;">Internationally accredited · Dubai campus</div>
+      </div>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.1em;margin-bottom:16px;color:var(--muted);text-transform:uppercase;">Certifications</h3>
+      <div class="cert-list">
+        <div class="cert-item">
+          <span class="cert-icon">🛡️</span>
+          <div>
+            <div class="cert-name">Google Cybersecurity Professional</div>
+            <div class="cert-org">GOOGLE / COURSERA</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">⚔️</span>
+          <div>
+            <div class="cert-name">Certified Ethical Hacker (CEH v12)</div>
+            <div class="cert-org">EC-COUNCIL / COURSERA</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🔒</span>
+          <div>
+            <div class="cert-name">ISO/IEC 27001 Lead Auditor</div>
+            <div class="cert-org">MASTERMIND ASSURANCE</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🤖</span>
+          <div>
+            <div class="cert-name">ISO/IEC 42001 Lead Auditor</div>
+            <div class="cert-org">MASTERMIND ASSURANCE</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">☁️</span>
+          <div>
+            <div class="cert-name">Zero Trust Cyber Associate (ZTCA)</div>
+            <div class="cert-org">ZSCALER</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🎓</span>
+          <div>
+            <div class="cert-name">Certified in Cybersecurity (CC)</div>
+            <div class="cert-org">ISC2</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🌐</span>
+          <div>
+            <div class="cert-name">CNSP — Certified Network Security Practitioner</div>
+            <div class="cert-org">THE SECOPS GROUP</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🧠</span>
+          <div>
+            <div class="cert-name">Artificial Intelligence Certification</div>
+            <div class="cert-org">SAMSUNG INNOVATION CAMPUS</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">☁️</span>
+          <div>
+            <div class="cert-name">OCI 2025 Certified AI Foundations Associate</div>
+            <div class="cert-org">ORACLE CLOUD INFRASTRUCTURE</div>
+          </div>
+        </div>
+        <div class="cert-item" style="border-color:rgba(0,255,157,0.3);">
+          <span class="cert-icon">🔄</span>
+          <div>
+            <div class="cert-name">ISO/IEC 42001 Lead Implementor <em style="color:var(--accent2);font-style:normal;font-size:10px;"> IN PROGRESS</em></div>
+            <div class="cert-org">PECB</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">
+    <span class="section-num">02 /</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-domain">
+      <span class="skill-domain-icon">🛡️</span>
+      <div class="skill-domain-name">Governance, Risk & Compliance</div>
+      <div class="skill-tags">
+        <span class="skill-tag">ISO 27001</span>
+        <span class="skill-tag">ISO 42001</span>
+        <span class="skill-tag">PDPL (UAE)</span>
+        <span class="skill-tag">NIST CSF</span>
+        <span class="skill-tag">GDPR</span>
+        <span class="skill-tag">Risk Assessment</span>
+        <span class="skill-tag">Security Auditing</span>
+        <span class="skill-tag">Policy Development</span>
+        <span class="skill-tag">Control Frameworks</span>
+        <span class="skill-tag">Framework Mapping</span>
+        <span class="skill-tag">Gap Analysis</span>
+      </div>
+    </div>
+    <div class="skill-domain">
+      <span class="skill-domain-icon">⚔️</span>
+      <div class="skill-domain-name">Offensive Security</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Burp Suite</span>
+        <span class="skill-tag">Kali Linux</span>
+        <span class="skill-tag">OWASP</span>
+        <span class="skill-tag">Penetration Testing</span>
+        <span class="skill-tag">Vulnerability Research</span>
+        <span class="skill-tag">Web App Security</span>
+        <span class="skill-tag">PortSwigger Labs</span>
+        <span class="skill-tag">BugCrowd</span>
+      </div>
+    </div>
+    <div class="skill-domain">
+      <span class="skill-domain-icon">📊</span>
+      <div class="skill-domain-name">Security Operations</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SOC Analysis</span>
+        <span class="skill-tag">SIEM</span>
+        <span class="skill-tag">Incident Response</span>
+        <span class="skill-tag">Log Analysis</span>
+        <span class="skill-tag">Zero Trust</span>
+        <span class="skill-tag">Network Security</span>
+      </div>
+    </div>
+    <div class="skill-domain">
+      <span class="skill-domain-icon">🤖</span>
+      <div class="skill-domain-name">AI & Emerging Tech</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AI Governance</span>
+        <span class="skill-tag">AI Risk Management</span>
+        <span class="skill-tag">Oracle OCI AI</span>
+        <span class="skill-tag">ML Security</span>
+        <span class="skill-tag">AI Compliance</span>
+        <span class="skill-tag">Samsung AI Certified</span>
+      </div>
+    </div>
+    <div class="skill-domain">
+      <span class="skill-domain-icon">🚀</span>
+      <div class="skill-domain-name">Security Tools & Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Cywift GRC Automation</span>
+        <span class="skill-tag">Skysnag Email Security</span>
+        <span class="skill-tag">Apollo.io</span>
+        <span class="skill-tag">Control Library Mapping</span>
+        <span class="skill-tag">Workflow Management</span>
+        <span class="skill-tag">MS Office Suite</span>
+        <span class="skill-tag">Campaign Management</span>
+        <span class="skill-tag">Leads Management</span>
+      </div>
+    </div>
+    <div class="skill-domain">
+      <span class="skill-domain-icon">💻</span>
+      <div class="skill-domain-name">Technical Stack</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Bash Scripting</span>
+        <span class="skill-tag">Network Protocols</span>
+        <span class="skill-tag">HackerOne</span>
+        <span class="skill-tag">Threat Modeling</span>
+        <span class="skill-tag">CTF Challenges</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">
+    <span class="section-num">03 /</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">May 2025 — Present · Dubai, UAE</div>
+      <div class="timeline-role">GRC Analyst Intern</div>
+      <div class="timeline-company">CyberWaze Global</div>
+      <div class="timeline-desc">
+        UAE-based cybersecurity consultancy operating across the Middle East. As a GRC Analyst Intern, contributing across compliance delivery, GRC tooling, email security operations, AI governance, and business pipeline support.
+        <br><br>
+
+        <strong style="color:var(--text);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;margin-top:6px;">⬡ GRC & Multi-Framework Compliance</strong>
+        <span style="color:var(--accent2);">▸</span> Worked on a <strong>hands-on real-world KSA PDPL project</strong> — supporting gap analysis, risk assessments, and policy documentation aligned to Saudi Arabia's Personal Data Protection Law<br>
+        <span style="color:var(--accent2);">▸</span> Performed <strong>Cywift file format conversion</strong> for each framework & <strong>Control Mapping to the Master Control Library</strong> — covering NCA CCC, PCI DSS, GDPR, SOC 2, and ISO/IEC 27001<br>
+        <span style="color:var(--accent2);">▸</span> Gained working knowledge of <strong>Cywift GRC Automation</strong> platform workflows — understanding how controls are structured, assigned, and tracked across compliance programmes<br>
+        <span style="color:var(--accent2);">▸</span> Applied knowledge of <strong>6 regulatory frameworks</strong> in practice — developing a cross-framework perspective that is rare at intern level and directly relevant to multi-standard GRC engagements<br><br>
+
+        <strong style="color:var(--text);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">⬡ Email Security — Skysnag Operations</strong>
+        <span style="color:var(--accent2);">▸</span> Manages Skysnag email security platform on behalf of CyberWaze Global — monitoring <strong>DMARC enforcement, SPF/DKIM alignment, and email-borne threat patterns</strong> across domains<br>
+        <span style="color:var(--accent2);">▸</span> Produces structured <strong>reports for CyberWaze Global leadership</strong> — translating email security metrics into readable risk summaries, enforcement trends, and remediation recommendations<br><br>
+
+        <strong style="color:var(--text);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">⬡ Product & Business Development</strong>
+        <span style="color:var(--accent2);">▸</span> Assigned as <strong>product manager across 5 cybersecurity products</strong> — owning go-to-market collateral, campaign strategy, internal documentation, and outreach execution for each product line<br>
+        <span style="color:var(--accent2);">▸</span> Maintains the <strong>Master Leads List</strong> across all 5 product lines — structured pipeline data, contact segmentation, and activity tracking to support business development<br>
+        <span style="color:var(--accent2);">▸</span> Uses <strong>Apollo.io</strong> for targeted lead generation — identifying and qualifying prospects across verticals and geographies for each security product<br>
+        <span style="color:var(--accent2);">▸</span> Supported preparation of both <strong>commercial and technical proposals</strong> — contributing to client-facing documents that bridge cybersecurity capability with business requirements<br><br>
+
+        <strong style="color:var(--text);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:10px;">⬡ AI Governance & Training</strong>
+        <span style="color:var(--accent2);">▸</span> Served as <strong>lead moderator</strong> for a PECB ISO/IEC 42001 Lead Implementor professional training program — managing session coordination, participant engagement, and delivery quality for practising compliance professionals<br>
+        <span style="color:var(--accent2);">▸</span> Actively working toward ISO/IEC 42001 Lead Implementor certification — combining with existing Lead Auditor credential to build a <strong>dual AI governance profile</strong> that is rare in the UAE market<br>
+        <span style="color:var(--accent2);">▸</span> Positioned at the forefront of AI governance as GCC regulators increasingly mandate ISO 42001 compliance for organisations deploying AI systems
+      </div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">Cywift GRC</span>
+        <span class="timeline-tag">Skysnag</span>
+        <span class="timeline-tag">ISO/IEC 27001</span>
+        <span class="timeline-tag">KSA PDPL</span>
+        <span class="timeline-tag">NCA CCC</span>
+        <span class="timeline-tag">PCI DSS</span>
+        <span class="timeline-tag">SOC 2</span>
+        <span class="timeline-tag">GDPR</span>
+        <span class="timeline-tag">ISO/IEC 42001</span>
+        <span class="timeline-tag">Executive Reporting</span>
+        <span class="timeline-tag">Product Management</span>
+        <span class="timeline-tag">Framework Mapping</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Jan 2025 — May 2025 · Remote</div>
+      <div class="timeline-role">Offensive Security Learner</div>
+      <div class="timeline-company">Self-Directed · HackerOne & BugCrowd Platforms</div>
+      <div class="timeline-desc">
+        Dedicated <strong>5+ months</strong> to hands-on offensive security practice — going beyond certifications into real-world platforms, live targets, and structured lab environments. This experience directly strengthens GRC consulting work: understanding attacker techniques produces more effective control frameworks and more credible risk assessments.
+        <br><br>
+        <span style="color:var(--accent2);">▸</span> Actively engaged with <strong>HackerOne and BugCrowd</strong> platforms — studying real vulnerability reports, understanding responsible disclosure workflows, and learning how professional researchers approach and document findings<br>
+        <span style="color:var(--accent2);">▸</span> Practised manual web application testing techniques using <strong>Burp Suite, Kali Linux, and Python scripting</strong> — covering OWASP Top 10 attack vectors including injection, broken auth, IDOR, XSS, and access control flaws<br>
+        <span style="color:var(--accent2);">▸</span> Completed structured labs on <strong>PortSwigger Web Security Academy</strong> — progressing through apprentice, practitioner, and expert-level challenges covering server-side attacks, SQLi, OAuth exploitation, and SSRF<br>
+        <span style="color:var(--accent2);">▸</span> Completed <strong>OWASP Juice Shop</strong> end-to-end — a realistic vulnerable application — gaining practical experience with exploitation techniques in a legal, controlled environment<br>
+        <span style="color:var(--accent2);">▸</span> This offensive background informs how I approach GRC: I understand <strong>why controls exist</strong>, not just what they say — making risk assessments and policy recommendations significantly more practical and defensible
+      </div>
+      <div class="timeline-tags">
+        <span class="timeline-tag">Offensive Security</span>
+        <span class="timeline-tag">Burp Suite</span>
+        <span class="timeline-tag">OWASP Top 10</span>
+        <span class="timeline-tag">Kali Linux</span>
+        <span class="timeline-tag">PortSwigger Labs</span>
+        <span class="timeline-tag">Web App Security</span>
+        <span class="timeline-tag">Python Scripting</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">
+    <span class="section-num">04 /</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-num">PROJECT_01</div>
+      <div class="project-name">Cywift Multi-Framework Control Mapping</div>
+      <div class="project-desc">Mapped Cywift's Master Control Library across 6 major regulatory frameworks — KSA PDPL, NCA CCC, PCI DSS, GDPR, SOC 2, and ISO/IEC 27001. Built unified cross-framework control mappings that allow organizations to achieve multi-standard compliance through a single GRC automation workflow, cutting redundant compliance effort significantly.</div>
+      <div class="project-tech">
+        <span>Cywift</span><span>KSA PDPL</span><span>NCA CCC</span><span>PCI DSS</span><span>GDPR</span><span>SOC 2</span><span>ISO 27001</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">PROJECT_02</div>
+      <div class="project-name">Skysnag Email Security — Operations & Reporting</div>
+      <div class="project-desc">Manages Skysnag's email security operations within CyberWaze Global — monitoring DMARC, DKIM, and SPF enforcement across client domains. Produces structured executive reports for CyberWaze leadership covering email threat patterns, enforcement rates, deliverability health, and remediation recommendations.</div>
+      <div class="project-tech">
+        <span>Skysnag</span><span>DMARC</span><span>DKIM</span><span>SPF</span><span>Email Security</span><span>Executive Reporting</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">PROJECT_03</div>
+      <div class="project-name">flydubai — Security Awareness Program 2025</div>
+      <div class="project-desc">Part of the CyberWaze Global team that delivered the <strong>flydubai Security Awareness Program 2025</strong> — a structured, simulation-driven training initiative for employees across multiple departments of one of the UAE's leading airlines. Delivered hands-on security awareness sessions using real-world attack simulations including phishing, social engineering, and other human-factor threat vectors. Engaged a diverse cross-functional audience spanning operations, finance, IT, and ground staff — tailoring content to non-technical and technical employees alike to maximise retention and behaviour change.</div>
+      <div class="project-tech">
+        <span>flydubai</span><span>Security Awareness</span><span>Phishing Simulation</span><span>Social Engineering</span><span>Employee Training</span><span>CyberWaze Global</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">PROJECT_04</div>
+      <div class="project-name">PECB ISO/IEC 42001 Training Moderation</div>
+      <div class="project-desc">Served as lead moderator for a PECB ISO/IEC 42001 Lead Implementor training program at CyberWaze Global — coordinating sessions, managing professional participant engagement, and ensuring alignment with PECB's AI Management System standard across all modules.</div>
+      <div class="project-tech">
+        <span>ISO/IEC 42001</span><span>AI Governance</span><span>PECB</span><span>Training Facilitation</span>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- FREELANCE SERVICES -->
+<section id="services" class="services-section">
+  <div class="section-label">
+    <span class="section-num">05 /</span>
+    <h2 class="section-title">Freelance Services</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="services-intro">Beyond my core role, I offer specialized cybersecurity consulting services to SMBs and startups — bringing enterprise-grade security thinking to organizations at any stage.</p>
+  <div class="services-grid">
+    <div class="service-card" style="border-top:2px solid var(--accent);">
+      <div class="service-card-icon">🎣</div>
+      <div class="service-card-title">Phishing Simulations</div>
+      <div class="service-card-desc">End-to-end phishing campaigns that test employee awareness — custom templates, click tracking, and detailed reporting to identify your human attack surface before real attackers do.</div>
+    </div>
+    <div class="service-card" style="border-top:2px solid var(--accent2);">
+      <div class="service-card-icon">🦠</div>
+      <div class="service-card-title">Ransomware Simulations</div>
+      <div class="service-card-desc">Safe, controlled ransomware behavior simulations to test your detection and response capabilities — without real-world risk. Identify gaps in endpoint protection and IR playbooks.</div>
+    </div>
+    <div class="service-card" style="border-top:2px solid var(--accent3);">
+      <div class="service-card-icon">📱</div>
+      <div class="service-card-title">QR & Smishing Awareness</div>
+      <div class="service-card-desc">Custom QR code phishing and SMS-based smishing simulations — increasingly critical as attackers shift to mobile attack vectors. Includes staff awareness kits and reporting.</div>
+    </div>
+    <div class="service-card" style="border-top:2px solid var(--accent);">
+      <div class="service-card-icon">🔌</div>
+      <div class="service-card-title">USB Drop Simulations</div>
+      <div class="service-card-desc">Physical security testing through USB drop scenarios — one of the most underestimated attack vectors in corporate environments. Track who plugs in, and train those who do.</div>
+    </div>
+    <div class="service-card" style="border-top:2px solid var(--accent2);">
+      <div class="service-card-icon">📋</div>
+      <div class="service-card-title">GRC Consulting</div>
+      <div class="service-card-desc">Framework implementation, gap analysis, and policy documentation for ISO 27001, PDPL, and NIST. Helping SMBs achieve compliance without the enterprise price tag.</div>
+    </div>
+    <div class="service-card" style="border-top:2px solid var(--accent3);">
+      <div class="service-card-icon">🎓</div>
+      <div class="service-card-title">Security Awareness Training</div>
+      <div class="service-card-desc">Tailored security awareness programs for teams — covering social engineering, safe browsing, data handling, and incident reporting. Delivered as workshops or self-paced kits.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">
+    <span class="section-num">06 /</span>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-wrap">
+    <div>
+      <h2 class="contact-heading">Let's Build<br><em>Something</em><br>Secure.</h2>
+      <p class="contact-sub">Available for consulting engagements, collaborations, and speaking opportunities in cybersecurity, GRC, and AI governance — across the UAE & MENA region.</p>
+      <div class="contact-links">
+        <a href="mailto:mr_uzair_asim@outlook.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          mr_uzair_asim@outlook.com
+          <span class="contact-link-label">Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-uzair-asim/" class="contact-link" target="_blank">
+          <span class="contact-link-icon">💼</span>
+          linkedin.com/in/muhammad-uzair-asim
+          <span class="contact-link-label">LinkedIn</span>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <span class="contact-link-icon">📍</span>
+          Dubai, UAE · Valid UAE Driving License
+          <span class="contact-link-label">Location</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input id="fname" type="text" placeholder="John Smith">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input id="femail" type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input id="fcompany" type="text" placeholder="Your Organization">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="fmsg" placeholder="Tell me about the opportunity..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;" onclick="
+          const name = document.getElementById('fname').value;
+          const email = document.getElementById('femail').value;
+          const company = document.getElementById('fcompany').value;
+          const msg = document.getElementById('fmsg').value;
+          if(!name||!email||!msg){alert('Please fill in all required fields.');return;}
+          const subject = encodeURIComponent('Portfolio Enquiry from ' + name + (company?' — '+company:''));
+          const body = encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nCompany: '+company+'\n\n'+msg);
+          window.location.href='mailto:mr_uzair_asim@outlook.com?subject='+subject+'&body='+body;
+        ">Send Message ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 <span>Muhammad Uzair Asim</span>. Built with intention.</div>
+  <div>GRC Analyst · Email Security · AI Governance · Dubai, UAE</div>
+  <div>Currently pursuing <span>CISA + CISSP</span></div>
+</footer>
+
+<!-- Float tag -->
+<div class="float-tag">
+  <strong>Currently at</strong>
+  CyberWaze Global · Dubai 🇦🇪
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Custom cursor (decorative ring only - nat<script defer src="/_vercel/insights/script.js"></script>
