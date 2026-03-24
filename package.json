@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Muhammad Uzair Asim - Cybersecurity Professional Portfolio",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "cybersecurity",
+    "grc"
+  ],
+  "author": "Muhammad Uzair Asim",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
